@@ -1,32 +1,23 @@
-package book
+package handlerbook
 
 import (
-	"fmt"
-
 	"github.com/gofiber/fiber/v2"
-	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
-	"github.com/wborbajr/mobapi/src/database"
+	"github.com/wborbajr/mobapi/database"
+	"github.com/wborbajr/mobapi/model"
 )
-
-type Book struct {
-	gorm.Model
-	Title  string `json:"name"`
-	Author string `json:"author"`
-	Rating string `json:"rating"`
-}
 
 func GetBooks(c *fiber.Ctx) error {
 	db := database.DBConn
-	var books []Book
+	var books []model.Book
 	db.Find(&books)
-	fmt.Println("All books")
+
 	return c.JSON(books)
 }
 func GetBook(c *fiber.Ctx) error {
 	id := c.Params("id")
 	db := database.DBConn
-	var book Book
+	var book model.Book
 	db.Find(&book, id)
 	return c.JSON(book)
 }
@@ -34,7 +25,7 @@ func DeleteBook(c *fiber.Ctx) error {
 	id := c.Params("id")
 	db := database.DBConn
 
-	var book Book
+	var book model.Book
 	db.First(&book, id)
 	if book.Title == "" {
 		return c.Status(500).SendString("No Book Found with ID")
@@ -44,7 +35,7 @@ func DeleteBook(c *fiber.Ctx) error {
 }
 func NewBook(c *fiber.Ctx) error {
 	db := database.DBConn
-	book := new(Book)
+	book := new(model.Book)
 	if err := c.BodyParser(book); err != nil {
 		return c.Status(503).SendString(err.Error())
 	}
