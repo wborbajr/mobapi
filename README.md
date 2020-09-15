@@ -6,9 +6,6 @@
 [![Repo Size](https://img.shields.io/github/repo-size/wborbajr/mobapi)]()
 [![GO](https://img.shields.io/github/go-mod/go-version/wborbajr/mobapi)]()
 [![Languages](https://img.shields.io/github/languages/count/wborbajr/mobapi)]()
-
-### CI/CD
-
 [![CI](https://github.com/wborbajr/mobapi/workflows/CI/badge.svg)]()
 
 🚀  Backend for a Mobile APP
