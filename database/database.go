@@ -15,7 +15,7 @@ var (
 func InitDatabase() error {
 	var err error
 
-	DBConn, err = gorm.Open("sqlite3", "books.sqlite")
+	DBConn, err = gorm.Open("sqlite3", "./infra/books.sqlite")
 	if err != nil {
 		return err
 	}
