@@ -9,3 +9,14 @@
 [![CI](https://github.com/wborbajr/mobapi/workflows/CI/badge.svg)]()
 
 🚀  Backend for a Mobile APP
+
+
+### HTTP status codes
+
+```
+1xx ## Informational Status Codes
+2xx ## Success status codes
+3xx ## Redirection status codes
+4xx ## Client Error status codes
+5xx ## Server Error status codes
+```
