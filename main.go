@@ -39,8 +39,8 @@ func main() {
 
 	router.SetupRoutes(app)
 
+	log.Printf("[MobAPI] up and running: http://127.0.0.1:%s", "9090")
 	log.Fatal(app.Listen(":9090"))
-	println("MobAPI")
 
 	defer database.DBConn.Close()
 }
