@@ -1,0 +1,24 @@
+version: "3.5"
+
+services:
+  mobapi:
+    image: mobapi:latest
+    build:
+      context: .
+      dockerfile: ./Docker/Dockerfile
+    container_name: ct_mobapi_app
+    hostname: mobapi
+    restart: unless-stopped
+    ports:
+      - 9090:9090
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+    networks:
+      - infra
+
+networks:
+  infra:
+    driver: bridge

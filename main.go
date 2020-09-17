@@ -9,7 +9,8 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/limiter"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/wborbajr/mobapi/database"
-	"github.com/wborbajr/mobapi/router"
+	"github.com/wborbajr/mobapi/router/book"
+	"github.com/wborbajr/mobapi/router/ping"
 )
 
 func main() {
@@ -37,7 +38,8 @@ func main() {
 		Output:     os.Stdout,
 	}))
 
-	router.SetupRoutes(app)
+	book.SetupRoutes(app)
+	ping.SetupRoutes(app)
 
 	log.Printf("[MobAPI] up and running: http://127.0.0.1:%s", "9090")
 	log.Fatal(app.Listen(":9090"))
