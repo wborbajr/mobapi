@@ -1,10 +1,16 @@
-package test
+package main_test
 
 import (
-	"net/http"
 	"testing"
+
+	"github.com/gofiber/fiber"
 )
 
 func TestServerUp(t *testing.T) {
-	req, err := http.NewRequest("GET", url string, body io.Reader)
+	app := fiber.New()
+
+	app.Use(func(c *Ctx) error {
+		return c.Next()
+	})
+
 }
